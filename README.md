@@ -83,7 +83,9 @@ For those interested in training their own model, follow these steps using the S
 #### 2.1- Install Ubuntu and Open Ubuntu CLI
 - Some of the code in the jupyter notebook that runs the model is for Linux, so if you are running from a windows machine you need to install Ubuntu (Linux environment for Windows) and run everything from the Ubuntu CLI 
 
-#### 2.2- create a separate Conda environment that users python version 3.10: 
+#### 2.2- Set up your conda / python environment
+- Install Miniconda for Linux from the Ubuntu terminal (https://docs.conda.io/en/latest/miniconda.html)
+- create a separate Conda environment that users python version 3.10: 
 - "conda create -n tao-py310 python=3.10 
 - If this environment has already been previously created, skip this step.
 

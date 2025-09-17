@@ -50,11 +50,11 @@ Generating a Synthetic Dataset Using Replicator > Activity: Understanding Basics
 - Open file and insert the path where I saved Isaac SIM on my computer: eg: "C:\isaacsim"
 - Check the path assigned to the "output variables", this is where the images will be saved
 
-1.3.2. Run the script
+#### 1.6. Run the script
 - Go to the folder and double click on the file: "generate_data.sh"
 - it will open Isaac SIM and start generating synthetic data image files to the output folders
 
-#### 1.6. Check synthetic data generated
+#### 1.7. Check synthetic data generated
 - Go to path assigned to the output variables open rgb files. 
 - Their quantity should correspond to the number passed in the --num_frames parameters defined in generate_data.sh
 

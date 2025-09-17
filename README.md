@@ -70,15 +70,17 @@ https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-OV-30+V1&unit=
 - Clone repo: https://github.com/NVIDIA-AI-IOT/synthetic_data_generation_training_workflow.git
 - Configure generate_data.sh
 - Run generate_data.sh
-##### DON NOT CLONE THE REPO FROM: 
+
+##### DON NOT CLONE AGAIN THE REPO FROM: 
 https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-OV-30+V1&unit=block-v1:DLI+S-OV-30+V1+type@vertical+block@aced7cf26b974581baf48fae53b70341 :  “Fine-Tuning and Validating an AI Perception Model > Lecture: Training a Model With Synthetic Data”
+Once you get to this point in the Nvidia course it will prompt you to download the same repo AGAIN:
 ```
 Optional: Training Your Own Model
 For those interested in training their own model, follow these steps using the Synthetic Data Generation Training Workflow:
 1. Clone the GitHub project and navigate to the local_train.ipynb notebook.
 ```
-- This repo does NOT contain important folders such as “/workspace/tao-experiments/palletjack_sdg/palletjack_data/distractors_warehouse/Camera/rgb” that the model users to fetch the data to train from. If you try running the model from this repo it will throw you an error.
-- Instead, go to the folder where you saved the repo from the previous step ("Generate Synthetic Data") and run local_train.ipynb from there”. This repo DOES contain “/workspace/tao-experiments/palletjack_sdg/palletjack_data/distractors_warehouse/Camera/rgb” and the other needed folders because they get generated during the synthetic data generation step. (This is not in Nvidia's original documentation)
+- This repo will NOT contain important folders such as “/workspace/tao-experiments/palletjack_sdg/palletjack_data/distractors_warehouse/Camera/rgb” that the model uses to fetch the data to train from. If you download the repo again and try running the model from there it will throw you an error.
+- Instead, go to the folder where you saved the repo from the previous step ("Generate Synthetic Data") and run local_train.ipynb from there”. This repo DOES contain “/workspace/tao-experiments/palletjack_sdg/palletjack_data/distractors_warehouse/Camera/rgb” and the other needed folders because they were generated during the synthetic data generation step. (This is not in Nvidia's original documentation)
 
 #### 2.1- Install Ubuntu and Open Ubuntu CLI
 - Some of the code in the jupyter notebook that runs the model is for Linux, so if you are running from a windows machine you need to install Ubuntu (Linux environment for Windows) and run everything from the Ubuntu CLI 
@@ -92,23 +94,45 @@ For those interested in training their own model, follow these steps using the S
 #### 2.3- Activate python 3.10 conda env: 
 - "conda activate tao-py310"
 
-#### 2.4- Connect to Nvidia's docker container:
+#### 2.4- Install Tao toolkit
+- Install the Prerequisite Software for TAO: 
+https://docs.nvidia.com/tao/tao-toolkit/text/quick_start_guide/running_via_launcher.html#install-prereq
+
+- Documentation for how to install TAO:
+https://docs.nvidia.com/tao/tao-toolkit/text/quick_start_guide/index.html
+   https://github.com/NVIDIA/tao_tutorials
+      https://www.nvidia.com/en-us/on-demand/session/other2022-tao/
+
+#### 2.5- Setup Docker Container
+
+- Install Docker desktop (https://docs.docker.com/engine/install/)
+- Install nvidia-container-toolkit (https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
+- Install the NVIDIA GPU driver for your Linux distribution. (https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/index.html)
+- Install the NVIDIA Container Toolkit (https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
+- Get an NGC account and API key (https://org.ngc.nvidia.com/setup/api-keys)
+- Log in to the NGC Docker registry (nvcr.io)
+   - Download and install Nvidia SDK Manager (https://developer.nvidia.com/sdk-manager),
+   - Install the Docker image, 
+   - Launch the Docker image (this is my docker image "docker run -it --rm --gpus all sdkmanager:[REPLACE WITH YOUR CREDENTIALS]-Ubuntu_22.04 --help")
+
+#### 2.6- Connect to Nvidia's docker container:
 - The jupyter notebook that runs this model needs to be run from a Docker container that has all libraries already installed
 - Install Docker Desktop
-- Open docker desktop application and click on the play button on the container in the container list
-- in the ubuntu cli run "docker login nvcr.io"
+- open Docker desktop app > Settings > Resources > WSL integration and turn the toggle on for "Ubuntu-22.04" (this was not on the documentation)
+- Inside the docker desktop application and click on the play button on the container in the container list
+- Inside the ubuntu cli run "docker login nvcr.io"
 - login to the Nvidia container (if already logged user and password were already saved, if not get user (API key) from https://org.ngc.nvidia.com/setup/api-keys and rotate password to get a new password)
 - run "docker ps -a" to check active containers.
 
-#### 2.5- Navigate to the mounted folder in Ubuntu with the jupyter notebook
+#### 2.7- Navigate to the mounted folder in Ubuntu with the jupyter notebook
 - navigate, in Ubuntu CLI, to folder where the GitHub project for synthetic data generation was cloned (from project https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-OV-30+V1&unit=block-v1:DLI+S-OV-30+V1+type@vertical+block@7fecaf9f66204c0ea35402fca5ae1b25: "Generating a Synthetic Dataset Using Replicator > Activity: Understanding Basics of the SDG Script": 
 "cd /mnt/c/...[YOUR LOCAL FOLDERS]...GitHub/synthetic_data_generation_training_workflow/local"
 
-#### 2.6- Open the notebook in this folder from Ubuntu CLI: 
+#### 2.8- Open the notebook in this folder from Ubuntu CLI: 
 - "jupyter notebook local_train.ipynb --allow-root"
 - Copy the URL provided in my web browser, click on the notebook to open
 
 - inside the notebook: DO NOT replace "# os.environ["LOCAL_PROJECT_DIR"] = "<LOCAL_PATH_OF_CLONED_REPO>" this line of code doesn't do anything since the path is automatically fetched. 
 
-#### 2.7- run all cells in the notebook
+#### 2.9- run all cells in the notebook
 

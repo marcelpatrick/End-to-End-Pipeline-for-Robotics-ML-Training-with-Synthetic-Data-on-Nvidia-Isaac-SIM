@@ -30,6 +30,7 @@ Generating a Synthetic Dataset Using Replicator > Activity: Understanding Basics
 
 #### 1.2. Clone repo: 
 . git clone https://github.com/NVIDIA-AI-IOT/synthetic_data_generation_training_workflow.git
+. Make sure you take note from where you saved the repo in your local machine because all other steps will need to be done from or to this folder (eg. running the scripts, saving synthetic images, running the ML model).
 
 #### 1.3. Adjust generate_data.sh to clear cache
 . Open generate_data.sh file with text editor
@@ -66,6 +67,15 @@ https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-OV-30+V1&unit=
 . Clone repo: https://github.com/NVIDIA-AI-IOT/synthetic_data_generation_training_workflow.git
 . Configure generate_data.sh
 . Run generate_data.sh
+##### DON NOT CLONE THE REPO FROM: 
+https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-OV-30+V1&unit=block-v1:DLI+S-OV-30+V1+type@vertical+block@aced7cf26b974581baf48fae53b70341 :  “Fine-Tuning and Validating an AI Perception Model > Lecture: Training a Model With Synthetic Data”
+```
+Optional: Training Your Own Model
+For those interested in training their own model, follow these steps using the Synthetic Data Generation Training Workflow:
+1. Clone the GitHub project and navigate to the local_train.ipynb notebook.
+```
+. This repo does NOT contain important folders such as “/workspace/tao-experiments/palletjack_sdg/palletjack_data/distractors_warehouse/Camera/rgb” that the model users to fetch the data to train from. If you try running the model from this repo it will throw you an error.
+. Instead, go to the folder where you saved the repo from the previous step ("Generate Synthetic Data") and run local_train.ipynb from there”. This repo DOES contain “/workspace/tao-experiments/palletjack_sdg/palletjack_data/distractors_warehouse/Camera/rgb” and the other needed folders because they get generated during the synthetic data generation step. (This is not in Nvidia's original documentation)
 
 #### 2.1- Install Ubuntu and Open Ubuntu CLI
 . Some of the code in the jupyter notebook that runs the model is for Linux, so if you are running from a windows machine you need to install Ubuntu (Linux environment for Windows) and run everything from the Ubuntu CLI 
@@ -95,5 +105,4 @@ https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-OV-30+V1&unit=
 -> inside the notebook: DO NOT replace "# os.environ["LOCAL_PROJECT_DIR"] = "<LOCAL_PATH_OF_CLONED_REPO>" this line of code doesn't do anything since the path is automatically fetched. 
 
 #### 2.7- run all cells in the notebook
-
 

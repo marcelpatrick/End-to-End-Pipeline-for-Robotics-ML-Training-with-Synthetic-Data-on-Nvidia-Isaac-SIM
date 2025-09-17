@@ -17,8 +17,8 @@
    5. Captures images + labels using a KITTI-format "writer" to build a training dataset.
    6. In a nutshell, It loads a warehouse 3D environment from Nvidia, fetches 3D assets from the Nvidia cloud database (both objects of interest and distractors), then uses the Replicator function to randomize the position and color of these objects in the scene. 
 
-### local_train.ipynb
-- What it is?: A Python script on Jupyter Notebook containing the Machine Learning Model.
+### local_train_Final_External.ipynb
+- What it is?: A Python script on Jupyter Notebook containing the Machine Learning Model. "local_train_Final_External" was modified from the original "local_train" file from the Nvidia documentation. "local_train" has a series of errors that needed to be corrected for the code to work. Changes are explained in the file. 
 - What it does?: Takes the synthetic images, trains a ML model on them and tests it to try to find the object of interest and then measures its precision. 
 
 
@@ -77,10 +77,10 @@ Once you get to this point in the Nvidia course it will prompt you to download t
 ```
 Optional: Training Your Own Model
 For those interested in training their own model, follow these steps using the Synthetic Data Generation Training Workflow:
-1. Clone the GitHub project and navigate to the local_train.ipynb notebook.
+1. Clone the GitHub project and navigate to the local_train_Final_External.ipynb notebook.
 ```
 - This repo will NOT contain important folders such as “/workspace/tao-experiments/palletjack_sdg/palletjack_data/distractors_warehouse/Camera/rgb” that the model uses to fetch the data to train from. If you download the repo again and try running the model from there it will throw you an error.
-- Instead, go to the folder where you saved the repo from the previous step ("Generate Synthetic Data") and run local_train.ipynb from there”. This repo DOES contain “/workspace/tao-experiments/palletjack_sdg/palletjack_data/distractors_warehouse/Camera/rgb” and the other needed folders because they were generated during the synthetic data generation step. (This is not in Nvidia's original documentation)
+- Instead, go to the folder where you saved the repo from the previous step ("Generate Synthetic Data") and run local_train_Final_External.ipynb from there”. This repo DOES contain “/workspace/tao-experiments/palletjack_sdg/palletjack_data/distractors_warehouse/Camera/rgb” and the other needed folders because they were generated during the synthetic data generation step. (This is not in Nvidia's original documentation)
 
 #### 2.1- Install Ubuntu and Open Ubuntu CLI
 - Some of the code in the jupyter notebook that runs the model is for Linux, so if you are running from a windows machine you need to install Ubuntu (Linux environment for Windows) and run everything from the Ubuntu CLI 
@@ -129,7 +129,7 @@ https://docs.nvidia.com/tao/tao-toolkit/text/quick_start_guide/index.html
 "cd /mnt/c/...[YOUR LOCAL FOLDERS]...GitHub/synthetic_data_generation_training_workflow/local"
 
 #### 2.8- Open the notebook in this folder from Ubuntu CLI: 
-- "jupyter notebook local_train.ipynb --allow-root"
+- "jupyter notebook local_train_Final_External.ipynb --allow-root"
 - Copy the URL provided in my web browser, click on the notebook to open
 
 - inside the notebook: DO NOT replace "# os.environ["LOCAL_PROJECT_DIR"] = "<LOCAL_PATH_OF_CLONED_REPO>" this line of code doesn't do anything since the path is automatically fetched. 

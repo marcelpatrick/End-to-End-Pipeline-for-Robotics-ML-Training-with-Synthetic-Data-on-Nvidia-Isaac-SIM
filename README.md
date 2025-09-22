@@ -1,3 +1,8 @@
+- This document fixes some of the issues with the official Nvidia documentation from COURSE: Synthetic Data Generation for Perception Model Training in Isaac Sim
+https://learn.nvidia.com/courses/course?course_id=course-v1:DLI+S-OV-30+V1&unit=block-v1:DLI+S-OV-30+V1+type@vertical+block@7fecaf9f66204c0ea35402fca5ae1b25
+- If you try to follow the documentation on the Nvidia website you will not be able to run the full project because there are important details that are either overlooked, not clearly explained or wrong.
+- This document tries to present a more clear step by step process that hopefully will allow anyone with basic technical knowledge to run the project end to end. 
+
 # End-to-End-Pipeline-for-Robotics-ML-Training-with-Synthetic-Data-on-Nvidia-Isaac-SIM
 
 ## Describing the different files used in the process:
